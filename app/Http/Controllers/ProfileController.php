@@ -36,6 +36,17 @@ class ProfileController extends Controller
 	}
 
 	/**
+	 * the user's profile information.
+	 */
+	public function show($id): View
+	{
+		$user = User::findOrFail($id);
+		return view('profile.show', [
+			'user' => $user
+		]);
+	}
+
+	/**
 	 * Update the user's profile information.
 	 */
 	public function update(ProfileUpdateRequest $request): RedirectResponse

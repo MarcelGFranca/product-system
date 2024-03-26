@@ -2,7 +2,7 @@
 	<x-slot name="header">
 		<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
 			{{ __('All users') }}
-			<x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+			<x-nav-link :href="route('register')" :active="request()->routeIs('register')">
 				{{ __('Create User') }}
 			</x-nav-link>
 
@@ -19,7 +19,9 @@
 						</p>
 					</div>
 					<div style="text-align: right; width: 55%; display: inline-block">
-						<x-secondary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'update-user')">{{ __('Update Profile') }}</x-secondary-button>
+						<x-nav-link :href="route('profile.show', ['id' => $user->id])" :active="request()->routeIs('profile.show')">
+							{{ __('Update Profile') }}
+						</x-nav-link>
 						<x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Delete Account') }}</x-danger-button>
 
 
